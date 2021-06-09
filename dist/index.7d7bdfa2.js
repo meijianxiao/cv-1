@@ -1,2 +1,80 @@
-!function(){let n=document.querySelector("#demo"),r=document.querySelector("#style"),a="\n/*你好，我是一名前端新人\n * 接下来我演示一下我的前端功底\n * 首先我要准备一个div\n*/\n#div1{\n\n    width:200px;\n    height:200px;\n}\n/*接下来我把 div 变成一个八卦图\n* 注意看好了\n* 首先把 div 变成一个圆\n*/\n#div1{\n    border-radius:50%;\n    box-shadow:0 0 3px rgba(0,0,0,0.5);\n    border:none;\n}\n/* 八卦是阴阳形成的\n* 一黑一白\n*/\n#div1{\n    /*background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);*/\n    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);\n}\n/* 加两个混元珠*/\n#div1::before{\n    border-radius:50%;\n    width:100px;\n    height:100px;\n   \n    top:0;\n    left:50%;\n    transform:translateX(-50%);\n    background:#000000;\n    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 25%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 100%);\n}\n#div1::after{\n    border-radius:50%;\n    width:100px;\n    height:100px;\n    \n    bottom:0;\n    left:50%;\n    transform:translateX(-50%);\n    background:#ffffff;\n    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%);\n}\n",e="",d=-1,g=()=>{setTimeout((()=>{d+=1,"\n"===a[d]?e+="<br>":" "===a[d]?e+="&nbsp;":e+=a[d],n.innerHTML=e,r.innerHTML=a.substring(0,d),window.scrollTo(0,9999999),n.scrollTo(0,99999),d<a.length-1&&g()}),10)};g()}();
-//# sourceMappingURL=index.7d7bdfa2.js.map
+let html = document.querySelector('#demo')
+let style = document.querySelector('#style')
+let string = `
+/*你好，我是一名前端新人
+ * 接下来我演示一下我的前端功底
+ * 首先我要准备一个div
+*/
+#div1{
+
+    width:200px;
+    height:200px;
+}
+/*接下来我把 div 变成一个八卦图
+* 注意看好了
+* 首先把 div 变成一个圆
+*/
+#div1{
+    border-radius:50%;
+    box-shadow:0 0 3px rgba(0,0,0,0.5);
+    border:none;
+}
+/* 八卦是阴阳形成的
+* 一黑一白
+*/
+#div1{
+    /*background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);*/
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
+}
+/* 加两个混元珠*/
+#div1::before{
+    border-radius:50%;
+    width:100px;
+    height:100px;
+   
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    background:#000000;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 25%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 100%);
+}
+#div1::after{
+    border-radius:50%;
+    width:100px;
+    height:100px;
+    
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    background:#ffffff;
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%);
+}
+`
+let string2 = ''
+
+let n =-1
+
+let step = ()=>{
+    setTimeout(()=>{
+        n = n+1;
+        if(string[n]==='\n'){
+            string2 +='<br>';
+        }else if(string[n]===' '){
+            string2 += '&nbsp;'
+        }else{
+            string2 +=string[n];
+        }
+        html.innerHTML = string2;
+        style.innerHTML = string.substring(0,n);
+        window.scrollTo(0,9999999);
+        html.scrollTo(0,99999)
+        if(n<string.length-1){
+            step()
+        }else{}
+    },10);
+};
+
+step();
+
+
+
